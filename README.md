@@ -5,10 +5,19 @@ Donate if a tool saves you time.
 
 ## Tools
 
+### Gaming
+
 | Tool | Description |
 |---|---|
 | [BDO Cooking Companion](https://kindware.github.io/tools/cooking-companion.html) | Cooking, alchemy and imperial delivery helper for Black Desert Online. Single file, works offline. |
+
+### Calculators
+
+| Tool | Description |
+|---|---|
 | [Dilution & Syringe Calculator](https://kindware.github.io/tools/dilution-calc.html) | Reconstitution math: powder mg + water mL → concentration → insulin-syringe units. Math only — not medical advice. |
+
+Every tool is registered in [`manifest.json`](manifest.json) — the running list of everything published here.
 
 ## Hosting
 

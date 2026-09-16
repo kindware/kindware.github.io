@@ -1,0 +1,27 @@
+{
+  "name": "KindWare",
+  "site": "https://kindware.github.io",
+  "updated": "2026-09-16",
+  "tools": [
+    {
+      "id": "bdo-cooking-companion",
+      "name": "BDO Cooking Companion",
+      "category": "Gaming",
+      "pill": "BDO",
+      "description": "Cooking, alchemy and imperial delivery helper for Black Desert Online. Single file, works offline, remembers your setup.",
+      "href": "tools/cooking-companion.html",
+      "status": "active",
+      "added": "2026-09-16"
+    },
+    {
+      "id": "dilution-calc",
+      "name": "Dilution & Syringe Calculator",
+      "category": "Calculators",
+      "pill": "Calculator",
+      "description": "Reconstitution math for powders: mg + mL to concentration to insulin-syringe units. Converts your numbers; never suggests a dose.",
+      "href": "tools/dilution-calc.html",
+      "status": "active",
+      "added": "2026-09-16"
+    }
+  ]
+}
