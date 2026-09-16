@@ -5,7 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>KindWare — free tools, donate if they earn it</title>
 <meta name="description" content="Free, no-nonsense browser tools. No accounts, no tracking, no ads. Donate if a tool saves you time.">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="assets/favicon-48.png">
+<meta property="og:title" content="KindWare — free tools, donate if they earn it">
+<meta property="og:description" content="Free, no-nonsense browser tools. No accounts, no tracking, no ads.">
+<meta property="og:image" content="https://kindware.github.io/assets/og-image-1200x630.png">
+<meta property="og:url" content="https://kindware.github.io/">
+<meta name="twitter:card" content="summary_large_image">
 <style>
   :root {
     --bg: #0d1117;
@@ -24,6 +30,8 @@
     font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   }
   .wrap { max-width: 880px; margin: 0 auto; padding: 56px 20px 32px; }
+  .headrow { display: flex; align-items: center; gap: 20px; }
+  header img { width: 66px; height: 66px; flex: none; }
   header h1 { margin: 0; font-size: 34px; letter-spacing: -0.5px; }
   header h1 em { font-style: normal; color: var(--accent); }
   .tag { color: var(--dim); margin: 8px 0 0; }
@@ -60,10 +68,13 @@
 <body>
 <div class="wrap">
 
-  <header>
-    <h1>Kind<em>Ware</em></h1>
-    <p class="tag">Free, no-nonsense tools that run in your browser. No accounts. No tracking. No ads.<br>
-    If one saves you time, you can donate — that's the whole business model.</p>
+  <header class="headrow">
+    <img src="assets/logo.png" alt="KindWare logo" width="66" height="66">
+    <div>
+      <h1>Kind<em>Ware</em></h1>
+      <p class="tag">Free, no-nonsense tools that run in your browser. No accounts. No tracking. No ads.<br>
+      If one saves you time, you can donate — that's the whole business model.</p>
+    </div>
   </header>
 
   <h2>Tools</h2>
