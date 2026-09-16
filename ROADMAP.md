@@ -1,6 +1,6 @@
 # KindWare — Site Buildout Roadmap
 
-Status: proposed (awaiting sign-off). Owner: lansd. Author: opencode session 2026-09-16.
+Status: **Phase 0 + Phase 1 SHIPPED** (2026-09-16). Next: Phase 2 (PWA + polish) on request.
 
 ## Goals
 

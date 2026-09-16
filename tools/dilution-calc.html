@@ -64,6 +64,12 @@
   .dlbtn { display: inline-block; margin-top: 10px; padding: 9px 14px; border-radius: 8px; border: 1px solid var(--accent); color: var(--accent); text-decoration: none; font-size: 13.5px; font-weight: 600; }
   .dlbtn:hover { background: var(--accent); color: #08130c; }
   .dlnote { color: var(--dim); font-size: 12.5px; margin-left: 10px; }
+  .crumbs { font-size: 13px; color: var(--dim); margin: -14px 0 18px; }
+  .crumbs a { color: var(--dim); text-decoration: none; }
+  .crumbs a:hover { color: var(--accent); }
+  .related { margin: 24px 0 0; padding: 14px 16px; border: 1px solid var(--border); border-radius: 10px; font-size: 13.5px; color: var(--dim); }
+  .related a { color: var(--accent); text-decoration: none; }
+  .related a:hover { text-decoration: underline; }
   footer { margin-top: 28px; color: var(--dim); font-size: 12.5px; border-top: 1px solid var(--border); padding-top: 14px; }
   footer a { color: var(--dim); }
 </style>
@@ -77,6 +83,7 @@
   </div>
 
   <h1>Dilution &amp; Syringe Calculator</h1>
+  <div class="crumbs"><a href="../index.html">KindWare</a> / <a href="../medical/index.html">Medical</a> / Dilution &amp; Syringe Calculator</div>
   <p class="sub">Powder + water → concentration → insulin-syringe units. It converts the numbers you enter and nothing else.</p>
   <p><a class="dlbtn" href="dilution-calc.html" download="kindware-dilution-calc.html">⬇ Download for offline</a><span class="dlnote">Single HTML file — works without internet.</span></p>
 
@@ -156,6 +163,13 @@
         <input id="reverseOut" type="text" readonly value="—">
       </div>
     </div>
+  </div>
+
+  <div class="related">
+    <strong style="color:var(--text)">More from KindWare:</strong>
+    <a href="../tools/index.html">All tools</a> ·
+    <a href="../medical/index.html">Medical section</a> ·
+    <a href="https://ko-fi.com/kindwaretools">Buy me a coffee</a>
   </div>
 
   <footer>

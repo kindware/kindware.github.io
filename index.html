@@ -3,148 +3,87 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>KindWare — free tools, donate if they earn it</title>
-<meta name="description" content="Free, no-nonsense browser tools. No accounts, no tracking, no ads. Donate if a tool saves you time.">
-<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
-<link rel="icon" type="image/png" sizes="48x48" href="assets/favicon-48.png">
-<meta property="og:title" content="KindWare — free tools, donate if they earn it">
-<meta property="og:description" content="Free, no-nonsense browser tools. No accounts, no tracking, no ads.">
+<title>KindWare — free browser tools that just work</title>
+<meta name="description" content="Free, no-account browser tools for Gaming, Trades, Medical and IT. No tracking, no ads — download them and they work offline.">
+<link rel="canonical" href="https://kindware.github.io/">
+<meta property="og:title" content="KindWare — free browser tools that just work">
+<meta property="og:description" content="Free, no-account browser tools for Gaming, Trades, Medical and IT. Works offline.">
 <meta property="og:image" content="https://kindware.github.io/assets/og-image-1200x630.png">
 <meta property="og:url" content="https://kindware.github.io/">
 <meta name="twitter:card" content="summary_large_image">
-<style>
-  :root {
-    --bg: #0d1117;
-    --panel: #161b22;
-    --panel-2: #1c2430;
-    --text: #e6edf3;
-    --dim: #8b949e;
-    --accent: #6ee7a8;
-    --border: #262d36;
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--text);
-    font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  }
-  .wrap { max-width: 880px; margin: 0 auto; padding: 56px 20px 32px; }
-  .headrow { display: flex; align-items: center; gap: 20px; }
-  header img { width: 66px; height: 66px; flex: none; }
-  header h1 { margin: 0; font-size: 34px; letter-spacing: -0.5px; }
-  header h1 em { font-style: normal; color: var(--accent); }
-  .tag { color: var(--dim); margin: 8px 0 0; }
-  h2 {
-    font-size: 13px; text-transform: uppercase; letter-spacing: 1.6px;
-    color: var(--dim); margin: 40px 0 14px; font-weight: 600;
-  }
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; }
-  .card {
-    display: flex; flex-direction: column; background: var(--panel); border: 1px solid var(--border);
-    border-radius: 12px; padding: 18px; color: var(--text);
-    transition: border-color .15s ease, transform .15s ease;
-  }
-  .card-main { display: block; text-decoration: none; color: inherit; flex: 1; }
-  .card-actions { display: flex; gap: 14px; margin-top: 14px; font-size: 13px; }
-  .card-actions a { color: var(--dim); text-decoration: none; font-weight: 600; }
-  .card-actions a:hover { color: var(--accent); }
-  .card:hover { border-color: var(--accent); transform: translateY(-2px); }
-  .card h3 { margin: 0 0 6px; font-size: 17px; }
-  .card p { margin: 0; color: var(--dim); font-size: 14px; }
-  .card.soon { opacity: .65; }
-  .pill {
-    display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: .5px;
-    color: var(--accent); border: 1px solid var(--accent); border-radius: 999px;
-    padding: 2px 9px; margin-bottom: 10px;
-  }
-  .donate { background: linear-gradient(135deg, var(--panel-2), var(--panel)); }
-  .links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
-  .btn {
-    display: inline-block; padding: 9px 16px; border-radius: 8px; text-decoration: none;
-    font-size: 14px; font-weight: 600; border: 1px solid var(--border); color: var(--text);
-  }
-  .btn.primary { background: var(--accent); border-color: var(--accent); color: #08130c; }
-  footer { margin-top: 48px; padding-top: 18px; border-top: 1px solid var(--border); color: var(--dim); font-size: 13px; }
-  footer a { color: var(--dim); }
-</style>
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="assets/favicon-48.png">
+<link rel="stylesheet" href="assets/site.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"KindWare","url":"https://kindware.github.io/","description":"Free browser tools for Gaming, Trades, Medical and IT. No accounts, no tracking."}
+</script>
 </head>
 <body>
 <div class="wrap">
 
-  <header class="headrow">
-    <img src="assets/logo.png" alt="KindWare logo" width="66" height="66">
-    <div>
-      <h1>Kind<em>Ware</em></h1>
-      <p class="tag">Free, no-nonsense tools that run in your browser. No accounts. No tracking. No ads.<br>
-      If one saves you time, you can donate — that's the whole business model.</p>
-    </div>
-  </header>
-
-  <h2>Gaming</h2>
-  <div class="grid">
-    <div class="card">
-      <a class="card-main" href="tools/cooking-companion.html">
-        <span class="pill">BDO</span>
-        <h3>BDO Cooking Companion</h3>
-        <p>Cooking, alchemy and imperial delivery helper for Black Desert Online. Single file, works offline, remembers your setup.</p>
-      </a>
-      <div class="card-actions">
-        <a href="tools/cooking-companion.html">Open</a>
-        <a href="tools/cooking-companion.html" download="kindware-bdo-cooking-companion.html">⬇ Download</a>
-      </div>
-    </div>
-  </div>
-
-  <h2>Trades</h2>
-  <div class="grid">
-    <div class="card">
-      <a class="card-main" href="tools/remodel-calc.html">
-        <span class="pill">Trades</span>
-        <h3>Remodel &amp; Trades Calculator</h3>
-        <p>Nine subsections in one page: paint, drywall, flooring &amp; tile, concrete, lumber &amp; deck, roofing, insulation, HVAC, landscape.</p>
-      </a>
-      <div class="card-actions">
-        <a href="tools/remodel-calc.html">Open</a>
-        <a href="tools/remodel-calc.html" download="kindware-remodel-trades-calc.html">⬇ Download</a>
-      </div>
-    </div>
-  </div>
-
-  <h2>Calculators</h2>
-  <div class="grid">
-    <div class="card">
-      <a class="card-main" href="tools/dilution-calc.html">
-        <span class="pill">Calculator</span>
-        <h3>Dilution &amp; Syringe Calculator</h3>
-        <p>Reconstitution math for powders: mg + mL → concentration → insulin-syringe units. Converts your numbers; never suggests a dose.</p>
-      </a>
-      <div class="card-actions">
-        <a href="tools/dilution-calc.html">Open</a>
-        <a href="tools/dilution-calc.html" download="kindware-dilution-calc.html">⬇ Download</a>
-      </div>
-    </div>
-    <div class="card soon">
-      <h3>More calculators on the way</h3>
-      <p>Estimators, converters, unit math — small tools that replace subscriptions. Check back soon.</p>
-    </div>
-  </div>
-
-  <h2>Support</h2>
-  <div class="card donate">
-    <h3>Donate what you like</h3>
-    <p>Every tool here is free forever. If one earned its keep, tip what it was worth to you — that funds the next one.</p>
+  <nav class="nav">
+    <a class="brand" href="/"><img src="assets/logo-96.png" alt="">Kind<em>Ware</em></a>
     <div class="links">
-      <a class="btn primary" href="https://ko-fi.com/kindwaretools">Ko-fi</a>
+      <a href="/gaming/">Gaming</a>
+      <a href="/trades/">Trades</a>
+      <a href="/medical/">Medical</a>
+      <a href="/it/">IT</a>
+      <a href="/tools/">All tools</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <h1>Free tools. <span style="color:var(--accent)">Zero nonsense.</span></h1>
+    <p>Pick your corner — every tool runs in your browser, needs no account, tracks nothing, and downloads to work offline.
+    If one saves you time, you can buy me a coffee.</p>
+  </div>
+
+  <div class="wb" id="welcome-back">
+    <h3>Welcome back</h3>
+    <p class="picks"></p>
+  </div>
+
+  <h2 class="sect">What are you here for?</h2>
+  <div class="sections">
+    <a class="sec-card" href="/gaming/" style="--sec:#a78bfa" onclick="kwTrackSection('gaming')">
+      <h3>Gaming</h3><p>Black Desert helpers, dice math, loot splitting.</p>
+      <span class="count" id="count-gaming">—</span>
+    </a>
+    <a class="sec-card" href="/trades/" style="--sec:#e0b458" onclick="kwTrackSection('trades')">
+      <h3>Trades</h3><p>Remodel and construction estimates, paint to HVAC.</p>
+      <span class="count" id="count-trades">—</span>
+    </a>
+    <a class="sec-card" href="/medical/" style="--sec:#f0879b" onclick="kwTrackSection('medical')">
+      <h3>Medical</h3><p>Math-only calculators. No advice, ever.</p>
+      <span class="count" id="count-medical">—</span>
+    </a>
+    <a class="sec-card" href="/it/" style="--sec:#58a6ff" onclick="kwTrackSection('it')">
+      <h3>IT</h3><p>Developer and sysadmin utilities for the browser.</p>
+      <span class="count" id="count-it">—</span>
+    </a>
+  </div>
+  <p class="muted" style="margin-top:14px">…or <a href="/tools/" style="color:var(--accent);text-decoration:none;font-weight:600">see everything</a>.</p>
+
+  <h2 class="sect">New &amp; featured</h2>
+  <div class="grid" id="newest-grid"><p class="muted">Loading tools…</p></div>
+
+  <div class="support">
+    <h3>Like my work?</h3>
+    <p>Every tool is free forever, no strings. If one earns its keep, buy me a cup of coffee — that funds the next tool.</p>
+    <div class="btns">
+      <a class="btn primary" href="https://ko-fi.com/kindwaretools">Buy me a coffee</a>
       <a class="btn" href="https://github.com/sponsors/kindware">GitHub Sponsors</a>
     </div>
   </div>
 
-  <footer>
-    © 2026 KindWare · Everything runs in your browser — your data never leaves your machine.<br>
+  <footer class="site">
+    © 2026 KindWare · no accounts, no tracking, no ads ·
+    <a href="/tools/">All tools</a> ·
     <a href="https://github.com/kindware">github.com/kindware</a>
   </footer>
 
 </div>
+<script src="assets/site.js"></script>
+<script>kwHome()</script>
 </body>
 </html>

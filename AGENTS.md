@@ -21,6 +21,9 @@ Free tools hub. Site: https://kindware.github.io · Repo: `kindware/kindware.git
 7. **Theme tokens:** bg `#0d1117`, panel `#161b22`, panel-2 `#1c2430`, text `#e6edf3`, dim `#8b949e`, accent `#6ee7a8`, border `#262d36`.
 8. **Truthful math:** label estimates, show the formula for hand-checking, disclaimers where the domain is risky (medical tools are math-only, never dosing advice).
 9. **Verify before shipping.** Browser harness with hand-computed expected values. For multi-section tools: write the spec in `_work/`, branch agents to build/verify pure modules in `work/sections/`, merge, then run one integration pass.
+10. **Site chrome is shared, tools are standalone.** Home, section pages (`/gaming/ /trades/ /medical/ /it/`) and `/tools/` use `assets/site.css` + `assets/site.js` and render tool lists from `manifest.json`. Tool pages must NEVER depend on site.js — they stay self-contained for offline download.
+11. **Support CTA on every page:** a "Like my work? Buy me a coffee" block (Ko-fi + GitHub Sponsors) on home/sections/directory; a compact support link on tool pages.
+12. **SEO hygiene:** every page gets unique title/description + canonical + og tags; add any new page/tool to `sitemap.xml`.
 
 ## Desktop path (PRINCIPLE — remember on every build)
 
