@@ -5,12 +5,12 @@
   "updated": "2026-09-16",
   "tools": [
     {
-      "id": "bdo-cooking-companion",
-      "name": "BDO Cooking Companion",
+      "id": "bdo-companion",
+      "name": "BDO Companion",
       "category": "gaming",
-      "tags": ["reference", "offline", "black-desert"],
-      "description": "Cooking, alchemy and imperial delivery helper for Black Desert Online. Single file, works offline, remembers your setup.",
-      "href": "tools/cooking-companion.html",
+      "tags": ["reference", "offline", "black-desert", "timers", "map"],
+      "description": "All-in-one Black Desert companion: cooking and alchemy, imperial delivery, weekly boss timers, gathering map with ranked hot spots, and lifeskill guides.",
+      "href": "tools/bdo-companion.html",
       "status": "active",
       "featured": true,
       "added": "2026-09-16",

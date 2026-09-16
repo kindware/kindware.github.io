@@ -9,7 +9,7 @@ Donate if a tool saves you time.
 
 | Tool | Description |
 |---|---|
-| [BDO Cooking Companion](https://kindware.github.io/tools/cooking-companion.html) | Cooking, alchemy and imperial delivery helper for Black Desert Online. Single file, works offline. |
+| [BDO Companion](https://kindware.github.io/tools/bdo-companion.html) | All-in-one Black Desert companion: cooking & alchemy, imperial delivery, weekly boss timers, gathering map with ranked hot spots, lifeskill guides. Single file, offline. |
 
 ### Trades
 
