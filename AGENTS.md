@@ -4,7 +4,7 @@ Free tools hub. Site: https://kindware.github.io · Repo: `kindware/kindware.git
 
 ## Layout
 
-- `index.html` — hub. Sections: Gaming, Trades, Calculators, Support.
+- `index.html` — hub. Sections per ROADMAP.md: Gaming, Trades, Medical, IT + Support block. Site buildout plan lives in `ROADMAP.md` (read it before structural changes).
 - `tools/<tool>.html` — one self-contained file per tool.
 - `assets/` — brand kit: `logo.png` (512 transparent), `logo-96.png` (inline use), `avatar-500.png`, `favicon-32/48.png`, `social banners`, `og-image-1200x630.png`.
 - `manifest.json` — **registry of every tool** (id, name, category, description, href, status, added). Update it with every new tool, plus the hub card and README table.
