@@ -41,11 +41,15 @@
   }
   .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; }
   .card {
-    display: block; background: var(--panel); border: 1px solid var(--border);
-    border-radius: 12px; padding: 18px; text-decoration: none; color: var(--text);
+    display: flex; flex-direction: column; background: var(--panel); border: 1px solid var(--border);
+    border-radius: 12px; padding: 18px; color: var(--text);
     transition: border-color .15s ease, transform .15s ease;
   }
-  a.card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .card-main { display: block; text-decoration: none; color: inherit; flex: 1; }
+  .card-actions { display: flex; gap: 14px; margin-top: 14px; font-size: 13px; }
+  .card-actions a { color: var(--dim); text-decoration: none; font-weight: 600; }
+  .card-actions a:hover { color: var(--accent); }
+  .card:hover { border-color: var(--accent); transform: translateY(-2px); }
   .card h3 { margin: 0 0 6px; font-size: 17px; }
   .card p { margin: 0; color: var(--dim); font-size: 14px; }
   .card.soon { opacity: .65; }
@@ -79,29 +83,47 @@
 
   <h2>Gaming</h2>
   <div class="grid">
-    <a class="card" href="tools/cooking-companion.html">
-      <span class="pill">BDO</span>
-      <h3>BDO Cooking Companion</h3>
-      <p>Cooking, alchemy and imperial delivery helper for Black Desert Online. Single file, works offline, remembers your setup.</p>
-    </a>
+    <div class="card">
+      <a class="card-main" href="tools/cooking-companion.html">
+        <span class="pill">BDO</span>
+        <h3>BDO Cooking Companion</h3>
+        <p>Cooking, alchemy and imperial delivery helper for Black Desert Online. Single file, works offline, remembers your setup.</p>
+      </a>
+      <div class="card-actions">
+        <a href="tools/cooking-companion.html">Open</a>
+        <a href="tools/cooking-companion.html" download="kindware-bdo-cooking-companion.html">⬇ Download</a>
+      </div>
+    </div>
   </div>
 
   <h2>Trades</h2>
   <div class="grid">
-    <a class="card" href="tools/remodel-calc.html">
-      <span class="pill">Trades</span>
-      <h3>Remodel &amp; Trades Calculator</h3>
-      <p>Nine subsections in one page: paint, drywall, flooring &amp; tile, concrete, lumber &amp; deck, roofing, insulation, HVAC, landscape.</p>
-    </a>
+    <div class="card">
+      <a class="card-main" href="tools/remodel-calc.html">
+        <span class="pill">Trades</span>
+        <h3>Remodel &amp; Trades Calculator</h3>
+        <p>Nine subsections in one page: paint, drywall, flooring &amp; tile, concrete, lumber &amp; deck, roofing, insulation, HVAC, landscape.</p>
+      </a>
+      <div class="card-actions">
+        <a href="tools/remodel-calc.html">Open</a>
+        <a href="tools/remodel-calc.html" download="kindware-remodel-trades-calc.html">⬇ Download</a>
+      </div>
+    </div>
   </div>
 
   <h2>Calculators</h2>
   <div class="grid">
-    <a class="card" href="tools/dilution-calc.html">
-      <span class="pill">Calculator</span>
-      <h3>Dilution &amp; Syringe Calculator</h3>
-      <p>Reconstitution math for powders: mg + mL → concentration → insulin-syringe units. Converts your numbers; never suggests a dose.</p>
-    </a>
+    <div class="card">
+      <a class="card-main" href="tools/dilution-calc.html">
+        <span class="pill">Calculator</span>
+        <h3>Dilution &amp; Syringe Calculator</h3>
+        <p>Reconstitution math for powders: mg + mL → concentration → insulin-syringe units. Converts your numbers; never suggests a dose.</p>
+      </a>
+      <div class="card-actions">
+        <a href="tools/dilution-calc.html">Open</a>
+        <a href="tools/dilution-calc.html" download="kindware-dilution-calc.html">⬇ Download</a>
+      </div>
+    </div>
     <div class="card soon">
       <h3>More calculators on the way</h3>
       <p>Estimators, converters, unit math — small tools that replace subscriptions. Check back soon.</p>

@@ -23,7 +23,7 @@ Donate if a tool saves you time.
 |---|---|
 | [Dilution & Syringe Calculator](https://kindware.github.io/tools/dilution-calc.html) | Reconstitution math: powder mg + water mL → concentration → insulin-syringe units. Math only — not medical advice. |
 
-Every tool is registered in [`manifest.json`](manifest.json) — the running list of everything published here.
+Every tool is registered in [`manifest.json`](manifest.json) — the running list of everything published here. Each tool is a single self-contained HTML file: use the **⬇ Download** button on any tool page (or the ⬇ link on the hub) and it keeps working offline.
 
 ## Hosting
 
