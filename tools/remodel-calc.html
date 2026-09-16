@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Remodel &amp; Trades Calculator — KindWare</title>
+<meta name="description" content="All-in-one home improvement estimates: paint, drywall, flooring and tile, concrete, lumber and decking, roofing, insulation, HVAC, landscaping.">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+<style>
+  :root {
+    --bg: #0d1117; --panel: #161b22; --panel-2: #1c2430; --text: #e6edf3; --dim: #8b949e;
+    --accent: #6ee7a8; --border: #262d36; --warn: #e0b458;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 30px 16px 48px; }
+  .top { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+  .top img { width: 34px; height: 34px; }
+  .top a { color: var(--text); text-decoration: none; font-weight: 700; }
+  .top a em { font-style: normal; color: var(--accent); }
+  h1 { font-size: 24px; margin: 0 0 4px; letter-spacing: -0.3px; }
+  .sub { color: var(--dim); font-size: 14px; margin: 0 0 16px; }
+  .notice { border: 1px solid var(--warn); border-left: 4px solid var(--warn); border-radius: 8px; padding: 10px 14px; font-size: 13px; color: var(--dim); background: rgba(224,180,88,.06); margin-bottom: 18px; }
+  .notice strong { color: var(--warn); }
+  .tabs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+  .tabs button { padding: 8px 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--panel); color: var(--dim); font-size: 13px; cursor: pointer; }
+  .tabs button:hover { border-color: var(--accent); color: var(--text); }
+  .tabs button.active { background: var(--accent); border-color: var(--accent); color: #08130c; font-weight: 700; }
+  .panel { display: none; }
+  .panel.active { display: block; }
+  .card { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 18px; margin-bottom: 14px; }
+  h2 { font-size: 12px; text-transform: uppercase; letter-spacing: 1.4px; color: var(--dim); margin: 0 0 14px; font-weight: 600; }
+  .row { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
+  label { display: block; font-size: 12.5px; color: var(--dim); margin-bottom: 5px; }
+  input, select { width: 100%; padding: 9px 11px; border-radius: 8px; border: 1px solid var(--border); background: var(--panel-2); color: var(--text); font-size: 15px; font-variant-numeric: tabular-nums; }
+  input:focus, select:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+  .field { margin-bottom: 12px; }
+  .out { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
+  .stat { background: var(--panel-2); border: 1px solid var(--border); border-radius: 10px; padding: 11px; }
+  .stat .k { font-size: 11.5px; color: var(--dim); margin-bottom: 4px; }
+  .stat .v { font-size: 20px; font-weight: 700; color: var(--accent); font-variant-numeric: tabular-nums; }
+  .stat .v small { font-size: 11.5px; color: var(--dim); font-weight: 400; }
+  .formula { margin-top: 12px; font-size: 12.5px; color: var(--dim); background: var(--panel-2); border-radius: 8px; padding: 9px 12px; font-variant-numeric: tabular-nums; overflow-x: auto; white-space: nowrap; }
+  .hint { font-size: 12.5px; color: var(--dim); margin-top: 10px; }
+  footer { margin-top: 26px; color: var(--dim); font-size: 12.5px; border-top: 1px solid var(--border); padding-top: 14px; }
+  footer a { color: var(--dim); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="top">
+    <img src="../assets/logo.png" alt="">
+    <a href="../index.html">Kind<em>Ware</em></a>
+  </div>
+
+  <h1>Remodel &amp; Trades Calculator</h1>
+  <p class="sub">One page, nine subsections: paint to HVAC. Estimates for planning and shopping — the math you'd otherwise do on scratch paper.</p>
+
+  <div class="notice">
+    <strong>Planning estimates only.</strong>
+    Supplier coverage and job-site conditions vary — verify quantities before buying. HVAC sizing shown here is a rule-of-thumb; a real load calculation (Manual J) requires a professional. Follow local codes.
+  </div>
+
+  <div class="tabs" id="tabs">
+    <button data-panel="paint" class="active">Paint</button>
+    <button data-panel="drywall">Drywall</button>
+    <button data-panel="floor">Flooring &amp; Tile</button>
+    <button data-panel="concrete">Concrete</button>
+    <button data-panel="lumber">Lumber &amp; Deck</button>
+    <button data-panel="roofing">Roofing</button>
+    <button data-panel="insulation">Insulation</button>
+    <button data-panel="hvac">HVAC</button>
+    <button data-panel="landscape">Landscape</button>
+  </div>
+
+  <section class="panel active" id="panel-paint">
+    <div class="card">
+      <h2>Paint — room</h2>
+      <div class="row">
+        <div class="field"><label>Wall perimeter (ft)</label><input id="p-per" type="number" step="any" value="40"></div>
+        <div class="field"><label>Wall height (ft)</label><input id="p-h" type="number" step="any" value="8"></div>
+        <div class="field"><label>Doors (each ≈ 21 sq ft)</label><input id="p-doors" type="number" step="1" value="1"></div>
+        <div class="field"><label>Windows (each ≈ 15 sq ft)</label><input id="p-win" type="number" step="1" value="2"></div>
+        <div class="field"><label>Coats</label><input id="p-coats" type="number" step="1" value="2"></div>
+        <div class="field"><label>Coverage (sq ft / gal)</label><input id="p-cov" type="number" step="any" value="350"></div>
+        <div class="field"><label>Waste / touch-up (%)</label><input id="p-waste" type="number" step="any" value="10"></div>
+      </div>
+      <div class="out">
+        <div class="stat"><div class="k">Paintable area</div><div class="v" id="p-area">—</div></div>
+        <div class="stat"><div class="k">Area × coats</div><div class="v" id="p-total">—</div></div>
+        <div class="stat"><div class="k">Paint needed</div><div class="v" id="p-gal">—</div></div>
+        <div class="stat"><div class="k">Buy</div><div class="v" id="p-buy">—</div></div>
+      </div>
+      <div class="formula" id="p-formula">—</div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-drywall">
+    <div class="card">
+      <h2>Drywall</h2>
+      <div class="row">
+        <div class="field"><label>Total area (sq ft)</label><input id="d-area" type="number" step="any" value="800"></div>
+        <div class="field"><label>Sheet size</label>
+          <select id="d-size"><option value="32">4×8 (32 sq ft)</option><option value="40">4×10 (40 sq ft)</option><option value="48">4×12 (48 sq ft)</option></select>
+        </div>
+        <div class="field"><label>Waste (%)</label><input id="d-waste" type="number" step="any" value="10"></div>
+      </div>
+      <div class="out">
+        <div class="stat"><div class="k">Sheets</div><div class="v" id="d-sheets">—</div></div>
+        <div class="stat"><div class="k">Joint compound</div><div class="v" id="d-mud">—</div></div>
+        <div class="stat"><div class="k">Tape (500 ft rolls)</div><div class="v" id="d-tape">—</div></div>
+        <div class="stat"><div class="k">Screws (≈)</div><div class="v" id="d-screws">—</div></div>
+      </div>
+      <div class="hint">Mud ≈ 4.5-gal bucket per 300 sq ft finished. Screws ≈ 1 per sq ft. Supplier yields vary.</div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-floor">
+    <div class="card">
+      <h2>Flooring &amp; Tile</h2>
+      <div class="row">
+        <div class="field"><label>Room length (ft)</label><input id="f-l" type="number" step="any" value="12"></div>
+        <div class="field"><label>Room width (ft)</label><input id="f-w" type="number" step="any" value="10"></div>
+        <div class="field"><label>Waste (%)</label><input id="f-waste" type="number" step="any" value="10"></div>
+        <div class="field"><label>Flooring coverage per box (sq ft)</label><input id="f-cov" type="number" step="any" value="20"></div>
+        <div class="field"><label>Tile size — length (in)</label><input id="ft-l" type="number" step="any" value="12"></div>
+        <div class="field"><label>Tile size — width (in)</label><input id="ft-w" type="number" step="any" value="12"></div>
+        <div class="field"><label>Joint width (in)</label><input id="ft-j" type="number" step="any" value="0.125"></div>
+        <div class="field"><label>Tile thickness (in)</label><input id="ft-t" type="number" step="any" value="0.375"></div>
+      </div>
+      <div class="out">
+        <div class="stat"><div class="k">Area</div><div class="v" id="f-area">—</div></div>
+        <div class="stat"><div class="k">Boxes of flooring</div><div class="v" id="f-boxes">—</div></div>
+        <div class="stat"><div class="k">Tiles</div><div class="v" id="ft-tiles">—</div></div>
+        <div class="stat"><div class="k">Grout (≈ lb)</div><div class="v" id="ft-grout">—</div></div>
+        <div class="stat"><div class="k">Thinset (50 lb bags)</div><div class="v" id="ft-thinset">—</div></div>
+      </div>
+      <div class="hint">Grout calibrated at 12×12 with 1/8" joints — small mosaic tiles use proportionally more; check the bag's coverage chart. Thinset: 50 lb bag ≈ 95 sq ft.</div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-concrete">
+    <div class="card">
+      <h2>Concrete — slab</h2>
+      <div class="row">
+        <div class="field"><label>Length (ft)</label><input id="c-l" type="number" step="any" value="10"></div>
+        <div class="field"><label>Width (ft)</label><input id="c-w" type="number" step="any" value="10"></div>
+        <div class="field"><label>Thickness (in)</label><input id="c-t" type="number" step="any" value="4"></div>
+      </div>
+      <div class="out">
+        <div class="stat"><div class="k">Volume</div><div class="v" id="c-yd">—</div></div>
+        <div class="stat"><div class="k">Volume (cu ft)</div><div class="v" id="c-cuft">—</div></div>
+        <div class="stat"><div class="k">80 lb bags</div><div class="v" id="c-b80">—</div></div>
+        <div class="stat"><div class="k">60 lb bags</div><div class="v" id="c-b60">—</div></div>
+      </div>
+      <div class="formula" id="c-formula">—</div>
+    </div>
+    <div class="card">
+      <h2>Concrete — post holes</h2>
+      <div class="row">
+        <div class="field"><label>Hole diameter (in)</label><input id="c-d" type="number" step="any" value="12"></div>
+        <div class="field"><label>Hole depth (in)</label><input id="c-depth" type="number" step="any" value="36"></div>
+        <div class="field"><label>Number of holes</label><input id="c-n" type="number" step="1" value="4"></div>
+      </div>
+      <div class="out">
+        <div class="stat"><div class="k">Total volume</div><div class="v" id="c-hyd">—</div></div>
+        <div class="stat"><div class="k">50 lb fast-set bags</div><div class="v" id="c-b50">—</div></div>
+      </div>
+      <div class="hint">Bag yields: 50 lb ≈ 0.375 cu ft · 60 lb ≈ 0.45 cu ft · 80 lb ≈ 0.6 cu ft.</div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-lumber">
+    <div class="card">
+      <h2>Lumber — board feet</h2>
+      <div class="row">
+        <div class="field"><label>Thickness (in, nominal)</label><input id="l-t" type="number" step="any" value="2"></div>
+        <div class="field"><label>Width (in, nominal)</label><input id="l-w" type="number" step="any" value="6"></div>
+        <div class="field"><label>Length (ft)</label><input id="l-len" type="number" step="any" value="8"></div>
+        <div class="field"><label>Quantity</label><input id="l-qty" type="number" step="1" value="10"></div>
+        <div class="field"><label>Price per board foot ($)</label><input id="l-price" type="number" step="any" value="0"></div>
+      </div>
+      <div class="out">
+        <div class="stat"><div class="k">Board feet</div><div class="v" id="l-bf">—</div></div>
+        <div class="stat"><div class="k">Estimated cost</div><div class="v" id="l-cost">—</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <h2>Decking</h2>
+      <div class="row">
+        <div class="field"><label>Deck length (ft)</label><input id="dk-l" type="number" step="any" value="16"></div>
+        <div class="field"><label>Deck width (ft)</label><input id="dk-w" type="number" step="any" value="12"></div>
+        <div class="field"><label>Board face width (in)</label><input id="dk-fw" type="number" step="any" value="5.5"></div>
+        <div class="field"><label>Gap between boards (in)</label><input id="dk-gap" type="number" step="any" value="0.25"></div>
+        <div class="field"><label>Board length purchased (ft)</label>
+          <select id="dk-blen"><option>8</option><option>10</option><option>12</option><option selected>16</option></select>
+        </div>
+        <div class="field"><label>Waste (%)</label><input id="dk-waste" type="number" step="any" value="10"></div>
+      </div>
+      <div class="out">
+        <div class="stat"><div class="k">Rows of boards</div><div class="v" id="dk-rows">—</div></div>
+        <div class="stat"><div class="k">Boards to buy</div><div class="v" id="dk-boards">—</div></div>
+        <div class="stat"><div class="k">Linear feet</div><div class="v" id="dk-lf">—</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-roofing">
+    <div class="card">
+      <h2>Roofing</h2>
+      <div class="row">
+        <div class="field"><label>Footprint length (ft)</label><input id="r-l" type="number" step="any" value="30"></div>
+        <div class="field"><label>Footprint width (ft)</label><input id="r-w" type="number" step="any" value="20"></div>
+        <div class="field"><label>Pitch (rise / 12)</label>
+          <select id="r-pitch"><option>3</option><option>4</option><option>5</option><option selected>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>12</option></select>
+        </div>
+        <div class="field"><label>Waste (%)</label><input id="r-waste" type="number" step="any" value="10"></div>
+      </div>
+      <div class="out">
+        <div class="stat"><div class="k">Roof area</div><div class="v" id="r-area">—</div></div>
+        <div class="stat"><div class="k">Squares (100 sq ft)</div><div class="v" id="r-squares">—</div></div>
+        <div class="stat"><div class="k">Shingle bundles (3/sq)</div><div class="v" id="r-bundles">—</div></div>
+        <div class="stat"><div class="k">Underlayment rolls</div><div class="v" id="r-rolls">—</div></div>
+      </div>
+      <div class="formula" id="r-formula">—</div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-insulation">
+    <div class="card">
+      <h2>Insulation — by product coverage</h2>
+      <div class="row">
+        <div class="field"><label>Area to insulate (sq ft)</label><input id="i-area" type="number" step="any" value="1000"></div>
+        <div class="field"><label>Coverage per roll/bag (sq ft)</label><input id="i-cov" type="number" step="any" value="40"></div>
+        <div class="field"><label>Waste (%)</label><input id="i-waste" type="number" step="any" value="5"></div>
+      </div>
+      <div class="out">
+        <div class="stat"><div class="k">Rolls / bags needed</div><div class="v" id="i-units">—</div></div>
+      </div>
+      <div class="hint">Read the coverage number off the exact product you're buying — it varies a lot by R-value and brand.</div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-hvac">
+    <div class="card">
+      <h2>HVAC — cooling</h2>
+      <div class="row">
+        <div class="field"><label>Conditioned area (sq ft)</label><input id="h-area" type="number" step="any" value="2000"></div>
+        <div class="field"><label>Climate factor (BTU / sq ft)</label>
+          <select id="h-coolf"><option value="15">15 — cool / well shaded</option><option value="20" selected>20 — typical</option><option value="25">25 — hot / humid</option><option value="30">30 — very hot</option></select>
+        </div>
+        <div class="field"><label>Sun exposure</label>
+          <select id="h-sun"><option value="0.9">Shaded</option><option value="1" selected>Average</option><option value="1.1">Sunny / lots of glass</option></select>
+        </div>
+      </div>
+      <div class="out">
+        <div class="stat"><div class="k">Cooling load</div><div class="v" id="h-btu">—</div></div>
+        <div class="stat"><div class="k">Tons (12,000 BTU)</div><div class="v" id="h-tons">—</div></div>
+        <div class="stat"><div class="k">System size (½-ton steps)</div><div class="v" id="h-rec">—</div></div>
+        <div class="stat"><div class="k">Airflow (≈400 CFM/ton)</div><div class="v" id="h-cfm">—</div></div>
+        <div class="stat"><div class="k">Trunk duct @ 500 fpm</div><div class="v" id="h-duct">—</div></div>
+      </div>
+      <div class="formula" id="h-formula">—</div>
+    </div>
+    <div class="card">
+      <h2>HVAC — heating</h2>
+      <div class="row">
+        <div class="field"><label>Heating factor (BTU / sq ft)</label>
+          <select id="h-heatf"><option value="30">30 — mild climate</option><option value="35" selected>35 — typical</option><option value="40">40 — cold</option><option value="45">45 — very cold</option><option value="50">50 — extreme</option></select>
+        </div>
+        <div class="field"><label>Furnace efficiency (AFUE)</label>
+          <select id="h-afue"><option value="0.8" selected>80%</option><option value="0.9">90%</option><option value="0.96">96%</option></select>
+        </div>
+      </div>
+      <div class="out">
+        <div class="stat"><div class="k">Heating load</div><div class="v" id="h-heat">—</div></div>
+        <div class="stat"><div class="k">Furnace input (AFUE)</div><div class="v" id="h-furnace">—</div></div>
+        <div class="stat"><div class="k">Common size (5k steps)</div><div class="v" id="h-furnace-rounded">—</div></div>
+      </div>
+      <div class="hint">Rule-of-thumb only. Real sizing needs a Manual J (load calc) — oversized systems short-cycle and undersized ones never keep up.</div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-landscape">
+    <div class="card">
+      <h2>Mulch / Soil / Gravel</h2>
+      <div class="row">
+        <div class="field"><label>Area length (ft)</label><input id="m-l" type="number" step="any" value="20"></div>
+        <div class="field"><label>Area width (ft)</label><input id="m-w" type="number" step="any" value="10"></div>
+        <div class="field"><label>Depth (in)</label><input id="m-d" type="number" step="any" value="3"></div>
+        <div class="field"><label>Waste / settling (%)</label><input id="m-waste" type="number" step="any" value="0"></div>
+      </div>
+      <div class="out">
+        <div class="stat"><div class="k">Volume</div><div class="v" id="m-yd">—</div></div>
+        <div class="stat"><div class="k">2 cu ft bags</div><div class="v" id="m-bags">—</div></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Estimates for shopping and planning. Double-check quantities against your supplier's coverage numbers — and for anything structural, electrical, gas, or refrigerant-related, use a licensed pro.
+    <a href="../index.html">Back to KindWare</a> · math only, no tracking.
+  </footer>
+
+</div>
+<script>
+  const $ = (id) => document.getElementById(id)
+  const val = (id, d = 0) => { const v = parseFloat($(id).value); return isFinite(v) ? Math.max(0, v) : d }
+  const vali = (id, d = 0) => { const v = parseInt($(id).value, 10); return isFinite(v) ? Math.max(0, v) : d }
+  const ceilSafe = (x) => Math.ceil(x - 1e-9)
+  const fmt = (n, d = 2) => {
+    if (!isFinite(n)) return "—"
+    let s = n.toFixed(d)
+    if (s.includes(".")) s = s.replace(/0+$/, "").replace(/\.$/, "")
+    return s
+  }
+  const set = (id, html) => { $(id).innerHTML = html }
+  const sq = (n) => `${fmt(n, 0)} <small>sq ft</small>`
+
+  function paint() {
+    const P = val("p-per", 0), H = val("p-h", 0), D = vali("p-doors", 0), W = vali("p-win", 0)
+    const C = vali("p-coats", 2), G = val("p-cov", 350), waste = val("p-waste", 10) / 100
+    const net = Math.max(0, P * H - D * 21 - W * 15)
+    const total = net * C * (1 + waste)
+    const gal = G > 0 ? total / G : 0
+    set("p-area", sq(net))
+    set("p-total", sq(total))
+    set("p-gal", `${fmt(gal, 2)} <small>gal</small>`)
+    set("p-buy", gal > 0 ? `${ceilSafe(gal)} <small>gal</small>` : "—")
+    $("p-formula").textContent = `(${fmt(P, 0)} ft × ${fmt(H, 0)} ft) − ${D}×21 − ${W}×15 = ${fmt(net, 0)} sq ft · ×${C} coats ×${fmt(1 + waste, 2)} = ${fmt(total, 0)} sq ft · ÷ ${fmt(G, 0)} = ${fmt(gal, 2)} gal`
+  }
+
+  function drywall() {
+    const A = val("d-area", 0), size = val("d-size", 32), waste = val("d-waste", 10) / 100
+    const sheets = ceilSafe(A * (1 + waste) / size)
+    const mud = A * 0.015
+    const buckets = ceilSafe(mud / 4.5)
+    const tape = ceilSafe(A * (1 + waste) / 500)
+    const screws = ceilSafe(A * (1 + waste))
+    set("d-sheets", `${isFinite(sheets) ? sheets : "—"} <small>sheets</small>`)
+    set("d-mud", `${fmt(mud, 1)} <small>gal ≈ ${isFinite(buckets) ? buckets : "—"} bucket(s)</small>`)
+    set("d-tape", `${isFinite(tape) ? tape : "—"} <small>rolls</small>`)
+    set("d-screws", `${isFinite(screws) ? screws.toLocaleString() : "—"}`)
+  }
+
+  function floorTile() {
+    const L = val("f-l", 0), W = val("f-w", 0), waste = val("f-waste", 10) / 100
+    const cov = val("f-cov", 20)
+    const A = L * W
+    const boxes = cov > 0 ? ceilSafe(A * (1 + waste) / cov) : 0
+    set("f-area", sq(A))
+    set("f-boxes", `${isFinite(boxes) && boxes > 0 ? boxes : "—"} <small>boxes</small>`)
+    const tL = val("ft-l", 12), tW = val("ft-w", 12), J = val("ft-j", 0.125), T = val("ft-t", 0.375)
+    const tileArea = (tL * tW) / 144
+    const tiles = tileArea > 0 ? ceilSafe(A * (1 + waste) / tileArea) : 0
+    const grout = (tL > 0 && tW > 0) ? (A / 4) * (((tL + tW) / (tL * tW)) * 6) * (J / 0.125) * (T / 0.375) : 0
+    const thinset = ceilSafe(A / 95)
+    set("ft-tiles", `${isFinite(tiles) && tiles > 0 ? tiles : "—"} <small>tiles</small>`)
+    set("ft-grout", `${fmt(grout, 0)} <small>lb ≈</small>`)
+    set("ft-thinset", `${isFinite(thinset) ? thinset : "—"} <small>bags</small>`)
+  }
+
+  function concrete() {
+    const L = val("c-l", 0), W = val("c-w", 0), T = val("c-t", 0)
+    const cuft = L * W * (T / 12)
+    const yd = cuft / 27
+    set("c-yd", `${fmt(yd, 2)} <small>yd³</small>`)
+    set("c-cuft", `${fmt(cuft, 1)} <small>cu ft</small>`)
+    set("c-b80", `${cuft > 0 ? ceilSafe(cuft / 0.6) : "—"} <small>bags</small>`)
+    set("c-b60", `${cuft > 0 ? ceilSafe(cuft / 0.45) : "—"} <small>bags</small>`)
+    $("c-formula").textContent = `${fmt(L, 0)} × ${fmt(W, 0)} × ${fmt(T, 2)} in ÷ 12 ÷ 27 = ${fmt(yd, 3)} yd³ (${fmt(cuft, 1)} cu ft)`
+    const dia = val("c-d", 0), depth = val("c-depth", 0), n = vali("c-n", 0)
+    const holeVol = dia > 0 ? Math.PI * Math.pow(dia / 24, 2) * (depth / 12) * n : 0
+    set("c-hyd", `${fmt(holeVol, 2)} <small>cu ft</small>`)
+    set("c-b50", `${holeVol > 0 ? ceilSafe(holeVol / 0.375) : "—"} <small>bags</small>`)
+  }
+
+  function lumberDeck() {
+    const t = val("l-t", 0), w = val("l-w", 0), len = val("l-len", 0), qty = vali("l-qty", 0), price = val("l-price", 0)
+    const bf = (t * w * len * qty) / 12
+    set("l-bf", `${fmt(bf, 1)} <small>bd ft</small>`)
+    set("l-cost", price > 0 ? `$${fmt(bf * price, 2)}` : "—")
+    const L = val("dk-l", 0), W = val("dk-w", 0), fw = val("dk-fw", 5.5), gap = val("dk-gap", 0.25)
+    const blen = val("dk-blen", 16), waste = val("dk-waste", 10) / 100
+    const rows = (fw + gap) > 0 ? ceilSafe((W * 12) / (fw + gap)) : 0
+    const perRow = blen > 0 ? ceilSafe(L / blen) : 0
+    const boards = ceilSafe(rows * perRow * (1 + waste))
+    set("dk-rows", `${isFinite(rows) && rows > 0 ? rows : "—"}`)
+    set("dk-boards", `${isFinite(boards) && boards > 0 ? boards : "—"} <small>boards</small>`)
+    set("dk-lf", `${fmt(boards * blen, 0)} <small>lin ft</small>`)
+  }
+
+  function roofing() {
+    const L = val("r-l", 0), W = val("r-w", 0), pitch = val("r-pitch", 6), waste = val("r-waste", 10) / 100
+    const mult = Math.sqrt(144 + pitch * pitch) / 12
+    const area = L * W * mult
+    const squares = area / 100
+    const bundles = ceilSafe(squares * 3 * (1 + waste))
+    const rolls = ceilSafe(squares / 10)
+    set("r-area", sq(area))
+    set("r-squares", `${fmt(squares, 2)}`)
+    set("r-bundles", `${isFinite(bundles) ? bundles : "—"} <small>bundles</small>`)
+    set("r-rolls", `${isFinite(rolls) && rolls > 0 ? rolls : "—"} <small>rolls</small>`)
+    $("r-formula").textContent = `pitch ${pitch}/12 → ×${fmt(mult, 3)} · ${fmt(L, 0)}×${fmt(W, 0)} = ${fmt(area, 0)} sq ft = ${fmt(squares, 2)} squares · 3 bundles/sq +${fmt(waste * 100, 0)}%`
+  }
+
+  function insulation() {
+    const A = val("i-area", 0), cov = val("i-cov", 40), waste = val("i-waste", 5) / 100
+    const units = cov > 0 ? ceilSafe(A * (1 + waste) / cov) : 0
+    set("i-units", `${isFinite(units) && units > 0 ? units : "—"} <small>rolls / bags</small>`)
+  }
+
+  function hvac() {
+    const A = val("h-area", 0), cf = val("h-coolf", 20), sun = val("h-sun", 1), hf = val("h-heatf", 35)
+    const btu = A * cf * sun
+    const tons = btu / 12000
+    const recTons = ceilSafe(tons * 2) / 2
+    const cfm = recTons * 400
+    const duct = Math.sqrt((4 * cfm) / (Math.PI * 500)) * 12
+    set("h-btu", `${fmt(btu, 0)} <small>BTU</small>`)
+    set("h-tons", `${fmt(tons, 2)} <small>tons</small>`)
+    set("h-rec", `${fmt(recTons, 1)} <small>ton system</small>`)
+    set("h-cfm", `${fmt(cfm, 0)} <small>CFM</small>`)
+    set("h-duct", `${fmt(duct, 1)} <small>in dia</small>`)
+    $("h-formula").textContent = `${fmt(A, 0)} sq ft × ${cf} BTU × ${fmt(sun, 2)} = ${fmt(btu, 0)} BTU · ÷12,000 = ${fmt(tons, 2)} tons · sizing to ½-ton steps = ${fmt(recTons, 1)} tons`
+    const afue = val("h-afue", 0.8)
+    const heat = A * hf
+    const input = afue > 0 ? heat / afue : 0
+    const rounded = ceiling5k(input)
+    set("h-heat", `${fmt(heat, 0)} <small>BTU</small>`)
+    set("h-furnace", `${fmt(input, 0)} <small>BTU</small>`)
+    set("h-furnace-rounded", `${fmt(rounded / 1000, 0)}k <small>BTU</small>`)
+  }
+
+  function ceiling5k(x) { return ceilSafe(x / 5000) * 5000 }
+
+  function landscape() {
+    const L = val("m-l", 0), W = val("m-w", 0), D = val("m-d", 0), waste = val("m-waste", 0) / 100
+    const cuft = L * W * (D / 12) * (1 + waste)
+    const yd = cuft / 27
+    set("m-yd", `${fmt(yd, 2)} <small>yd³</small>`)
+    set("m-bags", `${cuft > 0 ? Math.ceil(cuft / 2) : "—"} <small>bags</small>`)
+  }
+
+  function computeAll() {
+    paint(); drywall(); floorTile(); concrete(); lumberDeck(); roofing(); insulation(); hvac(); landscape()
+  }
+
+  const tabs = $("tabs")
+  tabs.addEventListener("click", (e) => {
+    const btn = e.target.closest("button[data-panel]")
+    if (!btn) return
+    for (const b of tabs.querySelectorAll("button")) b.classList.toggle("active", b === btn)
+    for (const p of document.querySelectorAll(".panel")) p.classList.toggle("active", p.id === `panel-${btn.dataset.panel}`)
+  })
+
+  document.addEventListener("input", computeAll)
+  document.addEventListener("change", computeAll)
+  computeAll()
+</script>
+</body>
+</html>

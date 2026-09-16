@@ -22,6 +22,16 @@
       "href": "tools/dilution-calc.html",
       "status": "active",
       "added": "2026-09-16"
+    },
+    {
+      "id": "remodel-calc",
+      "name": "Remodel & Trades Calculator",
+      "category": "Trades",
+      "pill": "Trades",
+      "description": "All-in-one home improvement estimates: paint, drywall, flooring and tile, concrete, lumber and decking, roofing, insulation, HVAC, landscaping.",
+      "href": "tools/remodel-calc.html",
+      "status": "active",
+      "added": "2026-09-16"
     }
   ]
 }

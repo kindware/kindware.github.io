@@ -11,6 +11,12 @@ Donate if a tool saves you time.
 |---|---|
 | [BDO Cooking Companion](https://kindware.github.io/tools/cooking-companion.html) | Cooking, alchemy and imperial delivery helper for Black Desert Online. Single file, works offline. |
 
+### Trades
+
+| Tool | Description |
+|---|---|
+| [Remodel & Trades Calculator](https://kindware.github.io/tools/remodel-calc.html) | All-in-one estimates: paint, drywall, flooring & tile, concrete, lumber & deck, roofing, insulation, HVAC, landscape. |
+
 ### Calculators
 
 | Tool | Description |
