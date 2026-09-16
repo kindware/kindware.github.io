@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KindWare — free tools, donate if they earn it</title>
+<meta name="description" content="Free, no-nonsense browser tools. No accounts, no tracking, no ads. Donate if a tool saves you time.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<style>
+  :root {
+    --bg: #0d1117;
+    --panel: #161b22;
+    --panel-2: #1c2430;
+    --text: #e6edf3;
+    --dim: #8b949e;
+    --accent: #6ee7a8;
+    --border: #262d36;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 56px 20px 32px; }
+  header h1 { margin: 0; font-size: 34px; letter-spacing: -0.5px; }
+  header h1 em { font-style: normal; color: var(--accent); }
+  .tag { color: var(--dim); margin: 8px 0 0; }
+  h2 {
+    font-size: 13px; text-transform: uppercase; letter-spacing: 1.6px;
+    color: var(--dim); margin: 40px 0 14px; font-weight: 600;
+  }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; }
+  .card {
+    display: block; background: var(--panel); border: 1px solid var(--border);
+    border-radius: 12px; padding: 18px; text-decoration: none; color: var(--text);
+    transition: border-color .15s ease, transform .15s ease;
+  }
+  a.card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .card h3 { margin: 0 0 6px; font-size: 17px; }
+  .card p { margin: 0; color: var(--dim); font-size: 14px; }
+  .card.soon { opacity: .65; }
+  .pill {
+    display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: .5px;
+    color: var(--accent); border: 1px solid var(--accent); border-radius: 999px;
+    padding: 2px 9px; margin-bottom: 10px;
+  }
+  .donate { background: linear-gradient(135deg, var(--panel-2), var(--panel)); }
+  .links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+  .btn {
+    display: inline-block; padding: 9px 16px; border-radius: 8px; text-decoration: none;
+    font-size: 14px; font-weight: 600; border: 1px solid var(--border); color: var(--text);
+  }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: #08130c; }
+  footer { margin-top: 48px; padding-top: 18px; border-top: 1px solid var(--border); color: var(--dim); font-size: 13px; }
+  footer a { color: var(--dim); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>Kind<em>Ware</em></h1>
+    <p class="tag">Free, no-nonsense tools that run in your browser. No accounts. No tracking. No ads.<br>
+    If one saves you time, you can donate — that's the whole business model.</p>
+  </header>
+
+  <h2>Tools</h2>
+  <div class="grid">
+    <a class="card" href="tools/cooking-companion.html">
+      <span class="pill">BDO</span>
+      <h3>BDO Cooking Companion</h3>
+      <p>Cooking, alchemy and imperial delivery helper for Black Desert Online. Single file, works offline, remembers your setup.</p>
+    </a>
+    <div class="card soon">
+      <h3>More on the way</h3>
+      <p>Estimators, converters, grabbers — small tools that replace subscriptions. Check back soon.</p>
+    </div>
+  </div>
+
+  <h2>Support</h2>
+  <div class="card donate">
+    <h3>Donate what you like</h3>
+    <p>Every tool here is free forever. If one earned its keep, tip what it was worth to you — that funds the next one.</p>
+    <div class="links">
+      <a class="btn primary" href="https://ko-fi.com/kindwaretools">Ko-fi</a>
+      <a class="btn" href="https://github.com/sponsors/kindware">GitHub Sponsors</a>
+    </div>
+  </div>
+
+  <footer>
+    © 2026 KindWare · Everything runs in your browser — your data never leaves your machine.<br>
+    <a href="https://github.com/kindware">github.com/kindware</a>
+  </footer>
+
+</div>
+</body>
+</html>
