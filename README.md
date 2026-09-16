@@ -17,11 +17,19 @@ Donate if a tool saves you time.
 |---|---|
 | [Remodel & Trades Calculator](https://kindware.github.io/tools/remodel-calc.html) | All-in-one estimates: paint, drywall, flooring & tile, concrete, lumber & deck, roofing, insulation, HVAC, landscape. |
 
-### Calculators
+### Medical
 
 | Tool | Description |
 |---|---|
 | [Dilution & Syringe Calculator](https://kindware.github.io/tools/dilution-calc.html) | Reconstitution math: powder mg + water mL → concentration → insulin-syringe units. Math only — not medical advice. |
+
+### IT
+
+| Tool | Description |
+|---|---|
+| [Subnet Calculator](https://kindware.github.io/tools/subnet-calc.html) | IPv4 subnet math: mask, network, broadcast, host range, usable hosts, binary view. |
+| [JWT Decoder](https://kindware.github.io/tools/jwt-decoder.html) | Decode JWT header, payload and time claims. Decoding only — no signature verification. |
+| [Contrast Checker](https://kindware.github.io/tools/contrast-check.html) | WCAG AA/AAA contrast ratios with live preview. |
 
 Every tool is registered in [`manifest.json`](manifest.json) — the running list of everything published here. Each tool is a single self-contained HTML file: use the **⬇ Download** button on any tool page (or the ⬇ link on the hub) and it keeps working offline.
 

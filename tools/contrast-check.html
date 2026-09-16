@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contrast Checker (WCAG) — KindWare</title>
+<meta name="description" content="WCAG contrast ratio checker: test text and background colors against AA and AAA levels. Runs in your browser, works offline.">
+<link rel="canonical" href="https://kindware.github.io/tools/contrast-check.html">
+<meta property="og:title" content="Contrast Checker (WCAG) — KindWare">
+<meta property="og:description" content="Test color contrast against WCAG AA and AAA. No accounts, works offline.">
+<meta property="og:image" content="https://kindware.github.io/assets/og-image-1200x630.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,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">
+<style>
+  :root { --bg:#0d1117; --panel:#161b22; --panel-2:#1c2430; --text:#e6edf3; --dim:#8b949e; --accent:#6ee7a8; --border:#262d36; --it:#58a6ff; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }
+  .wrap { max-width:760px; margin:0 auto; padding:30px 16px 48px; }
+  .top { display:flex; align-items:center; gap:12px; margin-bottom:20px; }
+  .top img { width:34px; height:34px; }
+  .top a { color:var(--text); text-decoration:none; font-weight:700; }
+  .top a em { font-style:normal; color:var(--accent); }
+  h1 { font-size:24px; margin:0 0 4px; letter-spacing:-0.3px; }
+  .crumbs { font-size:13px; color:var(--dim); margin:-14px 0 18px; }
+  .crumbs a { color:var(--dim); text-decoration:none; }
+  .crumbs a:hover { color:var(--accent); }
+  .sub { color:var(--dim); font-size:14px; margin:0 0 10px; }
+  .dlbtn { display:inline-block; margin-top:6px; padding:9px 14px; border-radius:8px; border:1px solid var(--accent); color:var(--accent); text-decoration:none; font-size:13.5px; font-weight:600; }
+  .dlbtn:hover { background:var(--accent); color:#08130c; }
+  .dlnote { color:var(--dim); font-size:12.5px; margin-left:10px; }
+  .card { background:var(--panel); border:1px solid var(--border); border-radius:12px; padding:18px; margin:16px 0 0; }
+  h2 { font-size:12px; text-transform:uppercase; letter-spacing:1.4px; color:var(--dim); margin:0 0 14px; font-weight:600; }
+  .row { display:grid; grid-template-columns:1fr 1fr auto; gap:12px; align-items:end; }
+  @media (max-width:560px) { .row { grid-template-columns:1fr 1fr; } .swap { grid-column:span 2; } }
+  label { display:block; font-size:12.5px; color:var(--dim); margin-bottom:5px; }
+  .pair { display:flex; gap:8px; align-items:center; }
+  input[type="color"] { width:44px; height:40px; padding:2px; border:1px solid var(--border); border-radius:8px; background:var(--panel-2); cursor:pointer; }
+  input[type="text"] { flex:1; padding:9px 11px; border-radius:8px; border:1px solid var(--border); background:var(--panel-2); color:var(--text); font:14px/1.4 ui-monospace,Consolas,monospace; text-transform:lowercase; }
+  input:focus { outline:2px solid var(--accent); outline-offset:-1px; }
+  .swap { padding:10px 14px; border-radius:8px; border:1px solid var(--border); background:var(--panel-2); color:var(--text); font-size:14px; font-weight:600; cursor:pointer; }
+  .swap:hover { border-color:var(--accent); }
+  .ratio { font-size:42px; font-weight:800; color:var(--it); letter-spacing:-1px; font-variant-numeric:tabular-nums; }
+  .ratio small { font-size:15px; color:var(--dim); font-weight:400; letter-spacing:0; }
+  .badges { display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:10px; margin-top:16px; }
+  .badge-row { background:var(--panel-2); border:1px solid var(--border); border-radius:10px; padding:10px 12px; display:flex; justify-content:space-between; align-items:center; gap:8px; font-size:13.5px; }
+  .pass, .fail { font-weight:700; font-size:12.5px; border-radius:999px; padding:2px 10px; }
+  .pass { color:#08130c; background:var(--accent); }
+  .fail { color:#fff; background:#b03050; }
+  .preview { margin-top:16px; border:1px solid var(--border); border-radius:10px; padding:18px; }
+  .preview .normal { font-size:16px; }
+  .preview .large { font-size:24px; font-weight:700; margin-top:14px; }
+  .formula { margin-top:14px; font:12px/1.7 ui-monospace,Consolas,monospace; color:var(--dim); overflow-x:auto; white-space:nowrap; }
+  .related { margin:24px 0 0; padding:14px 16px; border:1px solid var(--border); border-radius:10px; font-size:13.5px; color:var(--dim); }
+  .related a { color:var(--accent); text-decoration:none; }
+  .related a:hover { text-decoration:underline; }
+  footer { margin-top:26px; color:var(--dim); font-size:12.5px; border-top:1px solid var(--border); padding-top:14px; }
+  footer a { color:var(--dim); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="top">
+    <img src="data:image/png;base64,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" alt="">
+    <a href="../index.html">Kind<em>Ware</em></a>
+  </div>
+
+  <h1>Contrast Checker</h1>
+  <div class="crumbs"><a href="../index.html">KindWare</a> / <a href="../it/index.html">IT</a> / Contrast Checker</div>
+  <p class="sub">Text color × background color → WCAG contrast ratio with AA / AAA verdicts.</p>
+  <p><a class="dlbtn" href="contrast-check.html" download="kindware-contrast-check.html">⬇ Download for offline</a><span class="dlnote">Single HTML file — works without internet.</span></p>
+
+  <div class="card">
+    <h2>Colors</h2>
+    <div class="row">
+      <div>
+        <label for="fgHex">Text color</label>
+        <div class="pair"><input id="fg" type="color" value="#e6edf3"><input id="fgHex" type="text" value="#e6edf3" spellcheck="false"></div>
+      </div>
+      <div>
+        <label for="bgHex">Background color</label>
+        <div class="pair"><input id="bg" type="color" value="#0d1117"><input id="bgHex" type="text" value="#0d1117" spellcheck="false"></div>
+      </div>
+      <button class="swap" id="swap" type="button">⇄ Swap</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Result</h2>
+    <div class="ratio" id="ratio">— <small>: 1</small></div>
+    <div class="badges">
+      <div class="badge-row"><span>AA — normal text</span><span id="aaNormal">—</span></div>
+      <div class="badge-row"><span>AA — large text</span><span id="aaLarge">—</span></div>
+      <div class="badge-row"><span>AAA — normal text</span><span id="aaaNormal">—</span></div>
+      <div class="badge-row"><span>AAA — large text</span><span id="aaaLarge">—</span></div>
+    </div>
+    <div class="preview" id="preview">
+      <div class="normal">The quick brown fox jumps over the lazy dog — normal text (16px).</div>
+      <div class="large">The quick brown fox — large text (24px bold).</div>
+    </div>
+    <div class="formula" id="formula">—</div>
+  </div>
+
+  <div class="related">
+    <strong style="color:var(--text)">More from KindWare:</strong>
+    <a href="../tools/index.html">All tools</a> ·
+    <a href="../it/index.html">IT section</a> ·
+    <a href="https://ko-fi.com/kindwaretools">Buy me a coffee</a>
+  </div>
+
+  <footer>
+    Ratios follow WCAG 2.x: AA normal 4.5, AA large 3.0, AAA normal 7.0, AAA large 4.5.
+    <a href="../index.html">Back to KindWare</a> · no tracking.
+  </footer>
+
+</div>
+<script>
+  const $ = (id) => document.getElementById(id)
+
+  function hexToRgb(hex) {
+    hex = String(hex).trim().toLowerCase()
+    if (hex[0] === "#") hex = hex.slice(1)
+    if (hex.length === 3) hex = hex.split("").map((c) => c + c).join("")
+    if (!/^[0-9a-f]{6}$/.test(hex)) return null
+    return [parseInt(hex.slice(0, 2), 16), parseInt(hex.slice(2, 4), 16), parseInt(hex.slice(4, 6), 16)]
+  }
+
+  const chan = (v) => { v /= 255; return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4) }
+  const lum = ([r, g, b]) => 0.2126 * chan(r) + 0.7152 * chan(g) + 0.0722 * chan(b)
+
+  function ratioOf(a, b) {
+    const la = lum(a), lb = lum(b)
+    const hi = Math.max(la, lb), lo = Math.min(la, lb)
+    return (hi + 0.05) / (lo + 0.05)
+  }
+
+  const verdict = (pass) => pass ? '<span class="pass">PASS</span>' : '<span class="fail">FAIL</span>'
+
+  function paint() {
+    const fg = hexToRgb($("fgHex").value)
+    const bg = hexToRgb($("bgHex").value)
+    if (!fg || !bg) {
+      $("ratio").innerHTML = "— <small>: 1</small>"
+      for (const id of ["aaNormal", "aaLarge", "aaaNormal", "aaaLarge"]) $(id).innerHTML = "—"
+      $("formula").textContent = "Enter valid hex colors (#rgb or #rrggbb)."
+      return
+    }
+    const r = ratioOf(fg, bg)
+    $("ratio").innerHTML = r.toFixed(2) + " <small>: 1</small>"
+    $("aaNormal").innerHTML = verdict(r >= 4.5)
+    $("aaLarge").innerHTML = verdict(r >= 3)
+    $("aaaNormal").innerHTML = verdict(r >= 7)
+    $("aaaLarge").innerHTML = verdict(r >= 4.5)
+    const p = $("preview")
+    p.style.color = $("fgHex").value
+    p.style.background = $("bgHex").value
+    $("formula").textContent =
+      "L(fg) " + lum(fg).toFixed(4) + " · L(bg) " + lum(bg).toFixed(4) +
+      " · ratio = (max+0.05)/(min+0.05) = " + r.toFixed(2) + ":1"
+  }
+
+  function sync(from, to) {
+    const el = $(from), target = $(to)
+    el.addEventListener("input", () => { target.value = el.value; paint(); save() })
+  }
+  sync("fg", "fgHex")
+  sync("fgHex", "fg")
+  sync("bg", "bgHex")
+  sync("bgHex", "bg")
+
+  $("swap").addEventListener("click", () => {
+    const f = $("fgHex").value, b = $("bgHex").value
+    $("fgHex").value = b; $("fg").value = b
+    $("bgHex").value = f; $("bg").value = f
+    paint(); save()
+  })
+
+  function save() { try { localStorage.setItem("kw.contrast", JSON.stringify({ f: $("fgHex").value, b: $("bgHex").value })) } catch {} }
+  try {
+    const saved = JSON.parse(localStorage.getItem("kw.contrast") || "null")
+    if (saved && hexToRgb(saved.f) && hexToRgb(saved.b)) {
+      $("fgHex").value = saved.f; $("fg").value = saved.f
+      $("bgHex").value = saved.b; $("bg").value = saved.b
+    }
+  } catch {}
+
+  paint()
+</script>
+</body>
+</html>

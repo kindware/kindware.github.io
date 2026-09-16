@@ -39,6 +39,42 @@
       "featured": true,
       "added": "2026-09-16",
       "updated": "2026-09-16"
+    },
+    {
+      "id": "subnet-calc",
+      "name": "Subnet Calculator",
+      "category": "it",
+      "tags": ["calculator", "network", "offline"],
+      "description": "IPv4 subnet math: mask, network, broadcast, host range, usable hosts, binary view. Runs entirely in your browser.",
+      "href": "tools/subnet-calc.html",
+      "status": "active",
+      "featured": false,
+      "added": "2026-09-16",
+      "updated": "2026-09-16"
+    },
+    {
+      "id": "jwt-decoder",
+      "name": "JWT Decoder",
+      "category": "it",
+      "tags": ["decoder", "security", "offline"],
+      "description": "Decode JSON Web Tokens: header, payload and time claims. Decoding only — never verifies signatures.",
+      "href": "tools/jwt-decoder.html",
+      "status": "active",
+      "featured": false,
+      "added": "2026-09-16",
+      "updated": "2026-09-16"
+    },
+    {
+      "id": "contrast-check",
+      "name": "Contrast Checker",
+      "category": "it",
+      "tags": ["calculator", "accessibility", "offline"],
+      "description": "WCAG contrast checker: text and background colors against AA and AAA levels, with live preview.",
+      "href": "tools/contrast-check.html",
+      "status": "active",
+      "featured": false,
+      "added": "2026-09-16",
+      "updated": "2026-09-16"
     }
   ]
 }
