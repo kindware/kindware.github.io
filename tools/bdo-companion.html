@@ -1878,7 +1878,28 @@ footer .fine{font-size:12px;color:var(--dim);margin-top:16px;max-width:980px}
 <li><a href="https://bdocodex.com/us/" target="_blank" rel="noopener">BDO Codex — Item &amp; Quest Database</a> — items, quests and NPCs for seals, coupons and Dream Horse materials.</li>
 </ul></div>
 
-<p class="src">Verified Sep 2026 · Sources: <a href="https://www.blackdesertfoundry.com/training-guide">BDFoundry Horse Training Guide</a>, <a href="https://garmoth.com/mastery-brackets/training">Garmoth Training Brackets</a>, <a href="https://www.blackdesertfoundry.com/voltarion-dream-horse-guide">BDFoundry Voltarion Guide</a>, <a href="https://grumpygreen.cricket/bdo-dream-horse">GrumpyG Dream Horse Guide</a></p>
+<div class="stage"><h4>Horse tiers &amp; coats — full visual catalog</h4>
+<p>Coats are what you actually see on the horse. Stable icons often don't match the real coat, which is why the community uses <b>coat codes</b> (T6A, 8-3 and so on) to discuss colors and breeding targets. <b>Every coat with pictures:</b> <a href="https://grumpygreen.cricket/horse-tier/" target="_blank" rel="noopener">GrumpyGreen — BDO Horse Catalog with tier &amp; coat images</a> (last updated Aug 2025).</p>
+<table>
+<thead><tr><th>Tier</th><th>Coats</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>T6</td><td>21 coats (T6A–T6U)</td><td>Wild-horse range starts here (post-2022)</td></tr>
+<tr><td>T7</td><td>10 coats (T7A–T7J)</td><td>T7J is a wild-horse coat</td></tr>
+<tr><td>T8</td><td>9 community-coded coats (8-1 to 8-9)</td><td>Includes former T4 coats now issued as T8 (8-7, 8-8)</td></tr>
+<tr><td>T9 — Dream</td><td>Arduanatt · Dine · Doom</td><td>Dream horses; one per family</td></tr>
+<tr><td>T10 — Mythical</td><td>Mythical Arduanatt · Mythical Dine · Mythical Doom</td><td>Awakened dream horses</td></tr>
+</tbody>
+</table>
+<p class="small"><b>Important (patched 21 Sep 2022):</b> T1–T5 wild-horse appearances were retired — those coat types now come through <b>T8</b> horses instead (GrumpyGreen). Guides that still list T1–T5 wild horses are outdated on this point.</p>
+</div>
+<div class="stage"><h4>Horse training — where to learn more</h4>
+<ul>
+<li><a href="https://grumpygreen.cricket/bdo-horse/" target="_blank" rel="noopener">Beginner Horse &amp; Training Guide</a> — catching, taming, first mount</li>
+<li><a href="https://grumpygreen.cricket/bdo-horse-breeding/" target="_blank" rel="noopener">Beginner Horse Breeding Guide</a> — tier inheritance basics</li>
+<li><a href="https://grumpygreen.cricket/horse-breeding-advanced/" target="_blank" rel="noopener">Advanced Breeding: Color Theory &amp; Coats</a> — breeding toward specific coats</li>
+<li><a href="https://grumpygreen.cricket/horse-taming/" target="_blank" rel="noopener">Horse Taming</a> · <a href="https://grumpygreen.cricket/wild-horse/" target="_blank" rel="noopener">Wild Horse Identification</a></li>
+</ul>
+</div><p class="src">Verified Sep 2026 · Sources: <a href="https://www.blackdesertfoundry.com/training-guide">BDFoundry Horse Training Guide</a>, <a href="https://garmoth.com/mastery-brackets/training">Garmoth Training Brackets</a>, <a href="https://www.blackdesertfoundry.com/voltarion-dream-horse-guide">BDFoundry Voltarion Guide</a>, <a href="https://grumpygreen.cricket/bdo-dream-horse">GrumpyG Dream Horse Guide</a></p>
 </div>
 <div class="guide" id="guide-farming" hidden>
 <h3>Farming Leveling Guide (2026)</h3>
@@ -4447,6 +4468,7 @@ function kwInitBdo() {
     btn.addEventListener("click", function(){
       document.querySelectorAll("#guideNav .fbtn").forEach(function(b){ b.classList.toggle("active", b === btn) });
       document.querySelectorAll("#panel-guides .guide").forEach(function(g){ g.hidden = g.id !== "guide-" + btn.dataset.guide });
+      try { history.replaceState(null, "", "#guide:" + btn.dataset.guide) } catch (e) {}
     });
   });
 
@@ -4454,8 +4476,20 @@ function kwInitBdo() {
     const id = location.hash.slice(5);
     try { showTab("map") } catch (e) {}
     kwSelectResource(id);
+  } else if (location.hash.indexOf("#guide:") === 0) {
+    const gid = location.hash.slice(7);
+    try { showTab("guides") } catch (e) {}
+    const gb = document.querySelector('#guideNav .fbtn[data-guide="' + gid + '"]');
+    if (gb) gb.click();
   } else if (location.hash.indexOf("#tab:") === 0) {
-    try { showTab(location.hash.slice(5)) } catch (e) {}
+    const t = location.hash.slice(5);
+    const gb = document.querySelector('#guideNav .fbtn[data-guide="' + t + '"]');
+    if (gb) {
+      try { showTab("guides") } catch (e) {}
+      gb.click();
+    } else {
+      try { showTab(t) } catch (e) {}
+    }
   }
   document.addEventListener("click", function(e){
     const a = e.target && e.target.closest ? e.target.closest('a[href^="#tab:"]') : null;
